@@ -1,61 +1,274 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Best Recipes - Recept Megosztó Platform
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Egy modern, teljes stack webalkalmazás receptek megosztására és kezelésére, Laravel backend és React frontend technológiákkal építve.
 
-## About Laravel
+## 🚀 Főbb Funkciók
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Felhasználói Funkciók
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   **Recept böngészés**: Kategóriák szerint szűrés és keresés
+-   **Részletes recept nézet**: Hozzávalók, elkészítési útmutató, képek
+-   **Kommentrendszer**: Moderált hozzászólások receptekhez
+-   **Felhasználói regisztráció/bejelentkezés**: Biztonságos autentikáció
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Szerzői Funkciók (Bejelentkezett felhasználók)
 
-## Learning Laravel
+-   **Recept létrehozása**: Saját receptek feltöltése képekkel
+-   **Saját receptek szerkesztése**: Csak a saját receptek módosítása
+-   **Kép feltöltés**: Automatikus képkezelés és optimalizálás
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Admin Funkciók
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-   **Kategória kezelés**: Kategóriák létrehozása, szerkesztése, törlése
+-   **Komment moderáció**: Hozzászólások jóváhagyása/elutasítása
+-   **Teljes recept kezelés**: Minden recept szerkesztése/törlése
+-   **Felhasználó jogosultság kezelés**: Szerepkörök és engedélyek
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 🛠️ Technológiai Stack
 
-## Laravel Sponsors
+### Backend
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+-   **Laravel 11**: PHP web framework
+-   **Spatie Permission**: Szerepkör és jogosultság kezelés
+-   **Inertia.js**: SPA-szerű élmény hagyományos server-side renderinggel
+-   **SQLite**: Könnyű, file-alapú adatbázis
 
-### Premium Partners
+### Frontend
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+-   **React 18**: Modern UI komponens könyvtár
+-   **Inertia React Adapter**: Seamless Laravel-React integráció
+-   **Tailwind CSS**: Utility-first CSS framework
+-   **Vite**: Gyors frontend build tool
 
-## Contributing
+## 📋 Telepítési Útmutató
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### Előfeltételek
 
-## Code of Conduct
+-   PHP 8.2+
+-   Composer
+-   Node.js 18+
+-   npm vagy yarn
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 1. Projekt klónozása és függőségek telepítése
 
-## Security Vulnerabilities
+```bash
+git clone <repository-url>
+cd Best-Recipes
+composer install
+npm install
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### 2. Környezeti változók beállítása
 
-## License
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+### 3. Adatbázis beállítása
+
+**Módszer A: Migrációk és seedek (Ajánlott)**
+
+```bash
+php artisan migrate
+php artisan db:seed
+```
+
+**Módszer B: SQL dump importálása (Opcióális)**
+
+```bash
+# MySQL adatbázis létrehozása
+mysql -u root -p -e "CREATE DATABASE recipes"
+
+# SQL fájl importálása (ha van kész adatbázis)
+mysql -u root -p recipes < database.sql
+```
+
+**Adatbázis konfigurálása a .env fájlban:**
+
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=recipes
+DB_USERNAME=root
+DB_PASSWORD=your_password
+```
+
+### 4. Storage linkek létrehozása
+
+```bash
+php artisan storage:link
+```
+
+### 5. Frontend build
+
+```bash
+npm run build
+# vagy fejlesztéshez:
+npm run dev
+```
+
+### 6. Szerver indítása
+
+```bash
+php artisan serve
+```
+
+Az alkalmazás elérhető lesz a `http://localhost:8000` címen.
+
+## 🧪 Tesztelési Adatok
+
+### Admin Felhasználó
+
+-   **Email**: `admin@example.com`
+-   **Jelszó**: `password`
+-   **Jogosultságok**: Teljes adminisztrátori hozzáférés
+
+### Szerző Felhasználó
+
+-   **Email**: `author@example.com`
+-   **Jelszó**: `password`
+-   **Jogosultságok**: Recept létrehozás, saját receptek kezelése
+
+### Alap Felhasználó
+
+-   **Email**: `user@example.com`
+-   **Jelszó**: `password`
+-   **Jogosultságok**: Böngészés, kommentelés
+
+## 🏗️ Projekt Struktúra
+
+```
+├── app/
+│   ├── Http/Controllers/     # Laravel kontrollerek
+│   ├── Models/              # Eloquent modellek
+│   ├── Enums/               # Jogosultság enumerációk
+│   └── Traits/              # Újrafelhasználható funkciók
+├── resources/
+│   ├── js/
+│   │   ├── Components/      # React komponensek
+│   │   ├── Pages/          # Inertia oldalak
+│   │   └── Layouts/        # Layout komponensek
+│   └── css/                # Stilusok
+├── database/
+│   ├── migrations/         # Adatbázis migrációk
+│   └── seeders/           # Teszt adatok
+└── public/storage/        # Feltöltött képek
+```
+
+## 🔐 Jogosultságok és Szerepkörök
+
+### Szerepkörök
+
+-   **Admin**: Teljes rendszer hozzáférés
+-   **Author**: Recept létrehozás és kezelés
+-   **User**: Alap felhasználói funkciók
+
+### Engedélyek
+
+-   `create_recipe`: Recept létrehozás
+-   `edit_own_recipe`: Saját recept szerkesztés
+-   `delete_own_recipe`: Saját recept törlés
+-   `manage_all_recipes`: Minden recept kezelése
+-   `manage_categories`: Kategória kezelés
+-   `moderate_comments`: Komment moderáció
+
+## 🎨 Főbb Komponensek
+
+### Backend Kontrollerek
+
+-   `RecipeController`: Recept CRUD műveletek
+-   `CategoryController`: Kategória kezelés
+-   `CommentController`: Komment moderáció
+
+### Frontend Komponensek
+
+-   `RecipeCard`: Recept előnézet kártya
+-   `CategoryCard`: Kategória megjelenítő kártya
+-   `RecipeForm`: Recept létrehozó/szerkesztő form
+-   `CommentForm`: Komment írás form
+
+## 🔧 Fejlesztési Parancsok
+
+```bash
+# Frontend watch mode
+npm run dev
+
+# Adatbázis frissítés
+php artisan migrate:fresh --seed
+
+# Cache ürítés
+php artisan cache:clear
+php artisan config:clear
+php artisan view:clear
+
+# Tesztek futtatása
+php artisan test
+
+# Adatbázis exportálása (MySQL)
+mysqldump -u root -p recipes > database.sql
+```
+
+## 💾 Adatbázis Információk
+
+### Adatbázis Export/Import
+
+A projekt tartalmaz egy `database.sql` fájlt, amely a teljes adatbázis struktúrát és teszt adatokat tartalmazza.
+
+**Exportálás (fejlesztőknek):**
+
+```bash
+# Windows (XAMPP/WAMP)
+C:\xampp\mysql\bin\mysqldump.exe -u root -p recipes > database.sql
+
+# Linux/Mac vagy ha mysqldump a PATH-ban van
+mysqldump -u root -p recipes > database.sql
+
+# Vagy phpMyAdmin-ből: Exportálás > SQL formátum
+```
+
+**Importálás:**
+
+```bash
+mysql -u root -p recipes < database.sql
+```
+
+### Adatbázis Séma
+
+-   **users**: Felhasználók (admin, author, user szerepkörökkel)
+-   **recipes**: Receptek (user_id foreign key)
+-   **categories**: Kategóriák (színekkel és képekkel)
+-   **comments**: Kommentek (moderációs állapottal)
+-   **category_recipe**: Pivot tábla (many-to-many)
+-   **permissions & roles**: Spatie jogosultság táblák
+
+```
+
+## 📱 Reszponzív Design
+
+Az alkalmazás teljesen reszponzív és optimalizált:
+
+-   **Desktop**: Teljes funkcionalitás
+-   **Tablet**: Adaptált layout
+-   **Mobile**: Touch-friendly navigáció
+
+## 🛡️ Biztonsági Funkciók
+
+-   CSRF védelem minden form esetében
+-   SQL injection védelem Eloquent ORM-mel
+-   XSS védelem Blade templating motorral
+-   Jogosultság alapú hozzáférés kontrolh
+-   Képfeltöltés validáció és sanitizálás
+
+## 📊 Teljesítmény Optimalizációk
+
+-   Képek automatikus átméretezése
+-   Lazy loading a recept listákban
+-   Optimalizált adatbázis lekérdezések
+-   Frontend asset bundling és minifikáció
+
+---
+
+**Fejlesztő megjegyzés**: Ez az alkalmazás egy teljes körű bemutató projekt, amely modern web fejlesztési gyakorlatokat és technológiákat demonstrál. Minden funkció production-ready és skálázható architektúrával készült.
+```
